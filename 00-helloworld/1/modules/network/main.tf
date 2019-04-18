@@ -3,6 +3,7 @@ resource "aws_vpc" "vpc" {
 
   tags {
     Name = "VPC ${var.project}"
+    Terraform = "true"
   }
 }
 
@@ -13,6 +14,7 @@ resource "aws_subnet" "public_a" {
 
   tags {
     Name = "${var.project} Public A"
+    Terraform = "true"
   }
 }
 
@@ -22,6 +24,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags {
     Name = "${var.project} IGW"
+    Terraform = "true"
   }
 }
 
@@ -35,5 +38,6 @@ resource "aws_route_table" "public_route" {
 
   tags {
     Name = "${var.project} Public Route Table"
+    Terraform = "true"
   }
 }

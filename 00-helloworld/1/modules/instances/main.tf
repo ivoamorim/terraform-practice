@@ -14,6 +14,7 @@ resource "aws_instance" "ec2" {
 
   tags {
     Name = "${var.project} EC2"
+    Terraform = "true"
   }
 }
 
@@ -36,15 +37,17 @@ resource "aws_security_group" "ssh" {
 
   tags {
     Name = "SSH"
+    Terraform = "true"
   }
 }
 
 resource "aws_eip" "eip" {
-  count = "${var.create_eip == false ? 0 : 1}"
+  count    = "${var.create_eip == false ? 0 : 1}"
   instance = "${aws_instance.ec2.id}"
   vpc      = true
 
   tags {
     Name = "${var.project} EIP"
+    Terraform = "true"
   }
 }
